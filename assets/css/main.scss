@@ -1,0 +1,451 @@
+@import '1_tools/fonts';
+@import '1_tools/media';
+@import '1_tools/normalize';
+@import '1_tools/vars';
+@import '2_modules/swiper';
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    width: 100%;
+    max-width: 1165px;
+    position: relative;
+    margin: 0 auto;
+
+    img {
+        width: 100%;
+
+        &.desktop {
+            @include respond-to-max(825) {
+                display: none;
+            }
+        }
+
+        &.mobile {
+            display: none;
+
+            @include respond-to-max(825) {
+                display: block;
+            }
+        }
+    }
+}
+
+.placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        position: absolute;
+        top: 0;
+        opacity: 0.3;
+        z-index: -1;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+/* End Resets*/
+
+.main {
+    width: 100%;
+    height: auto;
+
+    header {
+        width: 100%;
+        background: $black;
+        padding: 25px;
+        position: fixed;
+        z-index: 2;
+
+        .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-family: $font-roboto;
+
+            a {
+                color: $white;
+                margin: 0;
+                padding: 0;
+                display: block;
+                @include respond-to-max(825){
+                    width: 100px;
+                }
+            }
+        }
+
+        nav {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            transition: all .3s ease-in-out;
+            &.open{
+                right: 0;
+            }
+
+            @include respond-to-max(825) {
+                width: 100%;
+                height: 100%;
+                background: $black;
+                position: fixed;
+                top: 86px;
+                right: -100%;
+            }
+
+            ul {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                list-style: none;
+                justify-content: flex-end;
+                @include respond-to-max(825) {
+                    padding-top: 80px;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    height: 100%;
+                }
+
+                li {
+                    margin: 0;
+                    padding: 0;
+                    margin-left: 20px;
+                    font-family: $font-dm;
+                    @include respond-to-max(825) {
+                        margin: 0 !important;
+                        justify-content: center;
+                        flex-direction: column;
+                        text-align: center;
+                        font-size: 25px;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        padding: 10px 0;
+                    }
+
+                    a {
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        .hamb {
+            margin-left: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: all .2 ease-in-out;
+            display: none;
+
+            @include respond-to-max(825) {
+                display: block;
+            }
+
+            &:hover {
+                .box {
+                    transform: skewY(5deg);
+                }
+            }
+
+            .box {
+                position: absolute;
+            }
+
+            .spans {
+                position: relative;
+            }
+        }
+    }
+
+    section {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    #hero {
+        background: $white;
+        padding-top: 80px;
+
+        .bghover {
+            width: 100%;
+            height: 622px;
+            background: $black;
+            position: absolute;
+        }
+
+        .swiper-container {
+            position: relative;
+            .swiper-slide{
+                position: relative;
+            }
+            .pagination-box {
+                position: absolute;
+                bottom: 84px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include respond-to-max(825){
+                    margin-left: 20px;
+                }
+
+                .swiper-button-next,
+                .swiper-button-prev {
+                    position: relative;
+                    top: auto;
+                    left: auto;
+                    right: auto;
+                    bottom: auto;
+                    position: relative;
+                    width: 65px;
+                    &:after{
+                        color: transparent;
+                    }
+                }
+
+                .swiper-button-prev {
+                    margin-right: 10px;
+
+                    &:hover {
+                        .front {
+                            left: 2px;
+                            top: 7px;
+                        }
+                    }
+
+                    .front {
+                        position: absolute;
+                        width: 100%;
+                        max-width: 59px;
+                        z-index: 1;
+                        top: 0;
+                        left: 7px;
+                        transition: all .1s ease-in-out;
+                    }
+
+                    .back {
+                        position: absolute;
+                        width: 100%;
+                        max-width: 59px;
+                        z-index: 0;
+                        top: 7px;
+                    }
+                }
+
+                .swiper-button-next {
+
+                    &:hover {
+                        .front {
+                            right: 2px;
+                            top: 7px;
+                        }
+                    }
+
+                    .front {
+                        position: absolute;
+                        width: 100%;
+                        max-width: 59px;
+                        z-index: 1;
+                        top: 0;
+                        right: 7px;
+                        transition: all .1s ease-in-out;
+                    }
+
+                    .back {
+                        position: absolute;
+                        width: 100%;
+                        max-width: 59px;
+                        z-index: 0;
+                        top: 7px;
+                    }
+                }
+
+                .swiper-pagination {
+                    position: relative;
+                    width: auto;
+                    top: auto;
+                    left: auto;
+                    right: auto;
+                    bottom: auto;
+                    font-size: 20px;
+                    font-weight: 700;
+                    margin-left: 15px;
+                    margin-bottom: 13px;
+                    font-family: $font-roboto;
+                }
+
+            }
+        }
+
+    }
+
+    #sobre {
+        background: $white;
+
+        .wrap {}
+    }
+
+    #steps {
+        background: $white;
+
+        .wrap {}
+    }
+
+    #nucleos {
+        background: $black;
+
+        .wrap {}
+    }
+
+    #conheca {
+        background: $white;
+
+        .wrap {}
+    }
+
+    #bond {
+        background: $white;
+
+        .bg-bond {
+            width: 100%;
+            height: 455px;
+            background: $black;
+            position: absolute;
+        }
+
+        .wrap {}
+    }
+
+    #noticias {
+        background: $white;
+
+        .wrap {}
+    }
+
+    #faq {
+        background: $white;
+        padding-bottom: 60px;
+
+        .wrap {
+            .accordion-group{
+                width: 100%;
+                max-width: 1164px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+
+                .cards{
+                    width: 100%;
+                    max-width: 970px;
+                    height: auto;
+                    padding: 10px;
+                    box-sizing: border-box;
+    
+                    @include respond-to-max(750) {
+                        width: 100%;
+                    }
+                    .card-container {
+                        width: 100%;
+                        background: $white;
+                        border-radius: 5px;
+                        display: table;
+                        box-shadow: 0px 2px 11px rgba(97, 97, 97, 0.2);
+                        
+    
+                        @include respond-to-max(750) {
+                            
+                        }
+    
+                        .accordion-group__accordion-heading {
+                            font-size: 18px;
+                            margin: 0;
+                            padding: 45px 40px;
+                            background: $white;
+                            border-radius: 5px;
+                            
+                            
+    
+                            .accordion-group__accordion-btn {
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                i{
+                                    transform: rotate(0deg);
+                                }
+    
+                                &.accordion-group__accordion-btn_expanded {
+                                    
+                                    i {
+                                        transform: rotate(180deg);
+                                    }
+                                }
+    
+                                i {
+                                    position: relative;
+                                    transition: ease-in-out all .4s;
+                                    img {}
+                                }
+    
+                                h4 {
+                                    font-size: 24px;
+                                    color: #000;
+                                    margin: 0;
+                                    font-family: $font-raleway;
+                                    font-weight: 600;
+                                    @include respond-to-max(750){
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+    
+                        .accordion-group__accordion-panel {
+                            p {
+                                line-height: 26px;
+                                margin: 0;
+                                font-size: 16px;
+                                font-weight: 400;
+                                padding: 0 45px 25px;
+                                color: #838383;
+    
+                                @include respond-to-max(750) {
+                                    font-size: 13px;
+                                    padding: 25px 30px 25px 40px;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #footer {
+        background: $black;
+
+        .wrap {}
+    }
+}

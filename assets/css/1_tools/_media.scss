@@ -1,0 +1,43 @@
+// Custom Mixins
+@mixin transitions($trans) {
+  -moz-transition: all $trans ease-in-out;
+  -webkit-transition: all $trans ease-in-out;
+  transition: all $trans ease-in-out;
+}
+@mixin center {
+  margin: 0 auto;
+  text-align: center;
+}
+@mixin clear() {
+  &:after,
+  &:before {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+@mixin respond-to-max($point) {
+   @media only screen and (max-width: $point+px){
+    @content;
+  }
+}
+@mixin respond-between($point1, $point2) {
+   @media only screen and (min-width: $point1+px) and (max-width: $point2+px){
+    @content;
+  }
+}
+@mixin respond-to-min($point) {
+   @media only screen and (min-width: $point+px){
+    @content;
+  }
+}
+@mixin respond-to-retina() {
+   @media only screen and (-webkit-min-device-pixel-ratio: 2){
+    @content;
+  }
+}
